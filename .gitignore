@@ -1,4 +1,11 @@
+# macOS
 .DS_Store
-.claude/tools/split-alpha
-.claude/tools/dexadrez
+
+# binarios compilados das ferramentas (recriam-se a partir dos .swift)
+.claude/tools/*
+!.claude/tools/*.swift
+
+# temporarios de sandbox
+*.sb-*
+
 node_modules/

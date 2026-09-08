@@ -258,16 +258,16 @@
 
   <div class="wrap">
     <div class="gal" id="gal">
-      <figure class="gal__item reveal"><img src="assets/img/gal/g3.jpg" width="787" height="1400" alt="Hellijhon na booth durante set" loading="lazy"><figcaption>Live</figcaption></figure>
+      <figure class="gal__item gal__item--video reveal" data-video="assets/video/g3.mp4"><img src="assets/img/gal/g3.jpg" width="787" height="1400" alt="Hellijhon na booth durante set" loading="lazy"><span class="gal__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>0:19</span><figcaption>Live</figcaption></figure>
       <figure class="gal__item reveal"><img src="assets/img/foto-4.jpg" width="1194" height="1600" alt="Retrato em preto e branco de Hellijhon" loading="lazy"><figcaption>Portrait</figcaption></figure>
       <figure class="gal__item reveal"><img src="assets/img/gal/g8.jpg" width="1088" height="1400" alt="Hellijhon com headphones" loading="lazy"><figcaption>Backstage</figcaption></figure>
-      <figure class="gal__item reveal"><img src="assets/img/gal/g7.jpg" width="787" height="1400" alt="Hellijhon mixando nos CDJs" loading="lazy"><figcaption>Booth</figcaption></figure>
+      <figure class="gal__item gal__item--video reveal" data-video="assets/video/g7.mp4"><img src="assets/img/gal/g7.jpg" width="787" height="1400" alt="Hellijhon mixando nos CDJs" loading="lazy"><span class="gal__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>0:34</span><figcaption>Booth</figcaption></figure>
       <figure class="gal__item reveal"><img src="assets/img/gal/g2.jpg" width="1400" height="1400" alt="Retrato em preto e branco de Hellijhon" loading="lazy"><figcaption>Mono</figcaption></figure>
-      <figure class="gal__item reveal"><img src="assets/img/gal/g5.jpg" width="787" height="1400" alt="Hellijhon e o público na pista" loading="lazy"><figcaption>Crowd</figcaption></figure>
+      <figure class="gal__item gal__item--video reveal" data-video="assets/video/g5.mp4"><img src="assets/img/gal/g5.jpg" width="787" height="1400" alt="Hellijhon e o público na pista" loading="lazy"><span class="gal__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>0:40</span><figcaption>Crowd</figcaption></figure>
       <figure class="gal__item reveal"><img src="assets/img/foto-2.jpg" width="1194" height="1600" alt="Hellijhon de perfil com headphones" loading="lazy"><figcaption>Headphones</figcaption></figure>
-      <figure class="gal__item reveal"><img src="assets/img/gal/g4.jpg" width="787" height="1400" alt="Hellijhon em set open air" loading="lazy"><figcaption>Open Air</figcaption></figure>
+      <figure class="gal__item gal__item--video reveal" data-video="assets/video/g4.mp4"><img src="assets/img/gal/g4.jpg" width="787" height="1400" alt="Hellijhon em set open air" loading="lazy"><span class="gal__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>1:11</span><figcaption>Open Air</figcaption></figure>
       <figure class="gal__item reveal"><img src="assets/img/gal/g9.jpg" width="1274" height="1400" alt="Retrato de Hellijhon" loading="lazy"><figcaption>Studio</figcaption></figure>
-      <figure class="gal__item reveal"><img src="assets/img/gal/g6.jpg" width="787" height="1400" alt="Hellijhon em set noturno" loading="lazy"><figcaption>Night</figcaption></figure>
+      <figure class="gal__item gal__item--video reveal" data-video="assets/video/g6.mp4"><img src="assets/img/gal/g6.jpg" width="787" height="1400" alt="Hellijhon em set noturno" loading="lazy"><span class="gal__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>1:00</span><figcaption>Night</figcaption></figure>
       <figure class="gal__item reveal"><img src="assets/img/foto-3.jpg" width="1066" height="1600" alt="Ensaio fotográfico de Hellijhon" loading="lazy"><figcaption>Session</figcaption></figure>
     </div>
   </div>
@@ -399,7 +399,11 @@
   <button class="lb__close" id="lbClose" aria-label="Fechar">&times;</button>
   <button class="lb__nav lb__nav--prev" id="lbPrev" aria-label="Anterior">&#8249;</button>
   <button class="lb__nav lb__nav--next" id="lbNext" aria-label="Próxima">&#8250;</button>
-  <figure class="lb__stage"><img id="lbImg" alt=""><figcaption id="lbCap"></figcaption></figure>
+  <figure class="lb__stage">
+    <img id="lbImg" alt="">
+    <video id="lbVid" controls playsinline preload="none" hidden></video>
+    <figcaption id="lbCap"></figcaption>
+  </figure>
 </div>
 
 <script src="js/main.js"></script>

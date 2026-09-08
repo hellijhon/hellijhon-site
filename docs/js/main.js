@@ -304,20 +304,64 @@
 
   /* ───────── Lightbox da galeria ───────── */
   var items = $$('.gal__item');
-  var lb = $('#lb'), lbImg = $('#lbImg'), lbCap = $('#lbCap');
+  var lb = $('#lb'), lbImg = $('#lbImg'), lbVid = $('#lbVid'), lbCap = $('#lbCap');
   var idx = 0;
+
+  // a musica de fundo sai de cena enquanto um video toca, senao os
+  // dois audios se sobrepoem; volta sozinha depois se estava tocando.
+  var trilha = $('#fpAudio'), trilhaPausadaPeloVideo = false;
+  function pausarTrilha() {
+    if (trilha && !trilha.paused) { trilhaPausadaPeloVideo = true; trilha.pause(); }
+  }
+  function retomarTrilha() {
+    if (trilha && trilhaPausadaPeloVideo) {
+      trilhaPausadaPeloVideo = false;
+      trilha.play().catch(function () {});
+    }
+  }
+
+  function descarregarVideo() {
+    if (!lbVid) return;
+    lbVid.pause();
+    lbVid.removeAttribute('src');
+    lbVid.load();               // solta o buffer de verdade
+    lbVid.hidden = true;
+  }
 
   function open(i) {
     idx = (i + items.length) % items.length;
-    var img = items[idx].querySelector('img');
-    var cap = items[idx].querySelector('figcaption');
-    lbImg.src = img.currentSrc || img.src;
-    lbImg.alt = img.alt || '';
+    var item = items[idx];
+    var img = item.querySelector('img');
+    var cap = item.querySelector('figcaption');
+    var video = item.getAttribute('data-video');
+
+    descarregarVideo();
+
+    if (video) {
+      lbImg.hidden = true;
+      lbVid.hidden = false;
+      lbVid.poster = img.currentSrc || img.src;
+      lbVid.src = video;
+      pausarTrilha();
+      lbVid.play().catch(function () {});
+    } else {
+      lbImg.hidden = false;
+      lbImg.src = img.currentSrc || img.src;
+      lbImg.alt = img.alt || '';
+      retomarTrilha();
+    }
+
     lbCap.textContent = cap ? cap.textContent : '';
     lb.classList.add('open');
     document.body.classList.add('locked');
   }
-  function close() { lb.classList.remove('open'); document.body.classList.remove('locked'); }
+
+  function close() {
+    descarregarVideo();
+    retomarTrilha();
+    lb.classList.remove('open');
+    document.body.classList.remove('locked');
+  }
 
   items.forEach(function (f, i) {
     f.setAttribute('tabindex', '0');
